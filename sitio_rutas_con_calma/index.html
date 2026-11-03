@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#faf9f6">
+    <meta name="description" content="Una comunidad para compartir rutas, consejos y pequeños descubrimientos de viaje por Colombia.">
+    <title>
+       Rutas — Comunidad de viajeros 
+    </title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer>
+    </script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Rutas, inicio">
+        <span class="brand-mark">
+           r. 
+        </span>
+        <span>
+           rutas 
+          <span class="brand-dot">
+             . 
+          </span>
+        </span>
+      </a>
+      <label class="search">
+        <span>
+           ⌕ 
+        </span>
+        <input id="searchInput" type="search" placeholder="Busca destinos, historias, consejos..." aria-label="Buscar publicaciones">
+      </label>
+      <div class="top-actions">
+        <button class="icon-button" id="savedToggle" title="Guardados" aria-label="Mostrar guardados">
+           ▱ 
+        </button>
+        <button class="avatar top-avatar" id="profileButton" aria-label="Tu perfil">
+           V 
+        </button>
+      </div>
+    </header>
+    <div class="shell" id="inicio">
+      <aside class="left-rail">
+        <div class="rail-label">
+           TU ESPACIO 
+        </div>
+        <button class="rail-link active" data-view="feed">
+          <span>
+             ⌂ 
+          </span>
+           Inicio 
+        </button>
+        <button class="rail-link" data-view="saved">
+          <span>
+             ▱ 
+          </span>
+           Guardados 
+        </button>
+        <div class="rail-label community-label">
+           COMUNIDADES 
+        </div>
+        <button class="rail-link community active-community" data-category="Todos">
+          <span class="community-dot dot-all">
+             ✳ 
+          </span>
+           Todo Rutas 
+        </button>
+        <button class="rail-link community" data-category="Rutas">
+          <span class="community-dot dot-route">
+             ↗ 
+          </span>
+           Rutas y lugares 
+        </button>
+        <button class="rail-link community" data-category="Consejos">
+          <span class="community-dot dot-tip">
+             ✦ 
+          </span>
+           Consejos viajeros 
+        </button>
+        <button class="rail-link community" data-category="Gastronomía">
+          <span class="community-dot dot-food">
+             ◒ 
+          </span>
+           Sabores locales 
+        </button>
+        <button class="rail-link community" data-category="Hospedajes">
+          <span class="community-dot dot-stay">
+             ⌂ 
+          </span>
+           Hospedajes 
+        </button>
+        <div class="rail-bottom">
+          <p>
+             Viajar se disfruta más cuando compartimos el camino. 
+          </p>
+          <a href="#about">
+             Acerca de Rutas ↗ 
+          </a>
+          <span>
+             Un proyecto de viajeros · 2026 
+          </span>
+        </div>
+      </aside>
+      <main class="content">
+        <div class="welcome-bar">
+          <div>
+            <p class="eyebrow">
+               LA COMUNIDAD DE VIAJEROS 
+            </p>
+            <h1>
+               ¿A dónde te lleva 
+              <em>
+                 el camino? 
+              </em>
+            </h1>
+            <p>
+               Ideas reales, rincones favoritos y consejos de quienes ya estuvieron ahí. 
+            </p>
+          </div>
+          <div class="welcome-icon">
+             ✳ 
+          </div>
+        </div>
+        <div class="feed-heading">
+          <div class="feed-tabs">
+            <button class="feed-tab selected" data-sort="popular">
+               En comunidad 
+            </button>
+            <button class="feed-tab" data-sort="new">
+               Más recientes 
+            </button>
+          </div>
+          <button class="write-button" id="openComposer">
+            <span>
+               ＋ 
+            </span>
+             Compartir historia 
+          </button>
+        </div>
+        <div class="filter-row">
+          <div id="filterLabel">
+             Explora todo 
+            <span id="postCount">
+            </span>
+          </div>
+          <div class="quick-filters">
+            <button class="chip selected" data-filter="Todos">
+               Todo 
+            </button>
+            <button class="chip" data-filter="Rutas">
+               Rutas 
+            </button>
+            <button class="chip" data-filter="Consejos">
+               Consejos 
+            </button>
+            <button class="chip" data-filter="Gastronomía">
+               Gastronomía 
+            </button>
+            <button class="chip" data-filter="Hospedajes">
+               Hospedajes 
+            </button>
+          </div>
+        </div>
+        <div class="feed" id="feed" aria-live="polite">
+        </div>
+        <div class="empty hidden" id="emptyState">
+          <span>
+             ⌕ 
+          </span>
+          <h2>
+             No encontramos publicaciones 
+          </h2>
+          <p>
+             Prueba otra búsqueda o cambia el filtro. 
+          </p>
+        </div>
+        <div class="about-strip" id="about">
+          <span>
+             ✳ 
+          </span>
+          <div>
+            <b>
+               Este espacio también es tuyo. 
+            </b>
+            <p>
+               Comparte lo que aprendiste en el camino y ayuda a alguien a planear su próxima escapada. 
+            </p>
+          </div>
+          <button id="aboutWrite">
+             Escribir una historia ↗ 
+          </button>
+        </div>
+      </main>
+      <aside class="right-rail">
+        <section class="side-card community-card">
+          <div class="community-banner">
+            <span>
+               ✳ 
+            </span>
+            <span>
+               RUTAS · COMUNIDAD 
+            </span>
+          </div>
+          <div class="side-card-body">
+            <h2>
+               Viajar con los ojos abiertos. 
+            </h2>
+            <p>
+               Un rincón para intercambiar rutas, hallazgos y consejos por Colombia. 
+            </p>
+            <div class="stats">
+              <div>
+                <b id="memberCount">
+                   1.2k 
+                </b>
+                <span>
+                   viajeros 
+                </span>
+              </div>
+              <div>
+                <b id="storyCount">
+                   9 
+                </b>
+                <span>
+                   historias 
+                </span>
+              </div>
+            </div>
+            <button class="join-button" id="joinButton">
+               ＋ Unirme a la comunidad 
+            </button>
+          </div>
+        </section>
+        <section class="side-card trending">
+          <div class="side-head">
+            <h3>
+               En conversación 
+            </h3>
+            <span>
+               ↗ 
+            </span>
+          </div>
+          <div id="trendingList">
+          </div>
+        </section>
+        <section class="side-card prompt-card">
+          <span class="prompt-icon">
+             ✎ 
+          </span>
+          <p class="eyebrow">
+             PREGUNTA DE LA SEMANA 
+          </p>
+          <h3>
+             ¿Qué lugar de Colombia te sorprendió más? 
+          </h3>
+          <p>
+             Cuéntanos qué no esperabas encontrar y por qué volverías. 
+          </p>
+          <button id="answerPrompt">
+             Compartir respuesta ↗ 
+          </button>
+        </section>
+        <div class="side-footer">
+          <a href="#about">
+             Acerca del proyecto 
+          </a>
+          <span>
+             · 
+          </span>
+          <a href="#about">
+             Normas de comunidad 
+          </a>
+          <span>
+             · 
+          </span>
+          <a href="#inicio">
+             Ayuda 
+          </a>
+        </div>
+      </aside>
+    </div>
+    <div class="modal hidden" id="composerModal" role="dialog" aria-modal="true" aria-labelledby="composerTitle">
+      <div class="modal-backdrop" data-close="composer">
+      </div>
+      <section class="dialog composer-dialog">
+        <button class="close-button" data-close="composer" aria-label="Cerrar">
+           × 
+        </button>
+        <p class="eyebrow">
+           TU EXPERIENCIA PUEDE AYUDAR A ALGUIEN 
+        </p>
+        <h2 id="composerTitle">
+           Comparte algo del camino 
+        </h2>
+        <p class="dialog-intro">
+           Una recomendación, una ruta o un pequeño descubrimiento. Las mejores historias son las que se comparten. 
+        </p>
+        <form id="postForm">
+          <label>
+             ¿De qué quieres hablar? 
+            <select id="postCategory">
+              <option>
+                 Rutas 
+              </option>
+              <option>
+                 Consejos 
+              </option>
+              <option>
+                 Gastronomía 
+              </option>
+              <option>
+                 Hospedajes 
+              </option>
+            </select>
+          </label>
+          <label>
+             Título 
+            <input id="postTitle" maxlength="90" required placeholder="Dale un título a tu historia">
+          </label>
+          <label>
+             Tu historia 
+            <textarea id="postBody" maxlength="900" required rows="5" placeholder="¿Qué descubriste? ¿Qué consejo le darías a alguien que va por primera vez?">
+            </textarea>
+          </label>
+          <div class="form-bottom">
+            <span>
+               Las historias se guardan en este navegador. 
+            </span>
+            <button class="write-button" type="submit">
+               Publicar historia 
+              <span>
+                 ↗ 
+              </span>
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+    <div class="modal hidden" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div class="modal-backdrop" data-close="detail">
+      </div>
+      <section class="dialog detail-dialog">
+        <button class="close-button" data-close="detail" aria-label="Cerrar">
+           × 
+        </button>
+        <div id="detailContent">
+        </div>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status">
+    </div>
+  </body>
+</html>
